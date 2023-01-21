@@ -22,9 +22,9 @@ const App = () => {
             avatarURL: "http://localhost:5001/tyler.jpg",
         },
     ];
-    return(
+    return (
         <div>
-          <ListContacts contacts={contacts}/>
+            <ListContacts contacts={contacts}/>
         </div>
     )
 };
