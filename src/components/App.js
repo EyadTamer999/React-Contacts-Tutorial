@@ -29,15 +29,17 @@ const App = () => {
     );
 
     const removeContact = (contact) => {
-        setContacts(contact.filter(rm => rm.id !== contact.id))
-    }
+        setContacts(contacts.filter((rm) => rm.id !== contact.id));
+        //the filter method removes the contact that is passed through as argument
+    };
+
 
 
     //returns a div that has our React component with the passed arguments contacts that we created in App.js
 
     return (
         <div>
-            <ListContacts contacts={contacts}/>
+            <ListContacts balabeezo={contacts} onDeleteContact={removeContact}/>
         </div>
     )
 };
