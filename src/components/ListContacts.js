@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const ListContacts = ({balabeezo, onDeleteContact}) => {
     return (<ol className="contact-list">
         {balabeezo.map((contact) => (<li key={contact.id} className="contact-list-item">
@@ -19,4 +20,10 @@ const ListContacts = ({balabeezo, onDeleteContact}) => {
         </li>))}
     </ol>);
 };
+
+ListContacts.protoTypes = {
+    contacts: PropTypes.array.isRequired,
+    onDeleteContact: PropTypes.func.isRequired
+};
+
 export default ListContacts;
