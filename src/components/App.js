@@ -1,32 +1,22 @@
 import "../css/App.css";
 import ListContacts from "./ListContacts";
 import {useState} from "react";
+import *  as ContactsAPI from "../utils/ContactsAPI"
+import {useEffect} from "react";
+import {getAll} from "../utils/ContactsAPI";
 
 const App = () => {
     //create function that allows us to set state for later contact manipulation like remove
-    const [contacts, setContacts] = useState(
-        //initial state is basically the state that we start with.
-        [
-            {
-                id: "karen",
-                name: "Karen Isgrigg",
-                handle: "karen_isgrigg",
-                avatarURL: "http://localhost:5001/karen.jpg",
-            },
-            {
-                id: "richard",
-                name: "Richard Kalehoff",
-                handle: "richardkalehoff",
-                avatarURL: "http://localhost:5001/richard.jpg",
-            },
-            {
-                id: "tyler",
-                name: "Tyler McGinnis",
-                handle: "tylermcginnis",
-                avatarURL: "http://localhost:5001/tyler.jpg",
-            },
-        ]
-    );
+    const [contacts, setContacts] = useState([]);
+
+    useEffect(() => {
+        const getContacts = async () =>{
+            const res = await ContactsAPI.getAll();
+            setContacts(res);
+        };
+
+        getContacts();
+    }, []);
 
     const removeContact = (contact) => {
         setContacts(contacts.filter((rm) => rm.id !== contact.id));
